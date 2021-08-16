@@ -11,7 +11,17 @@
   {{ range first 12 (where .Pages "Section" "post")}}
   <article class="style{{ $.Scratch.Get "classCounter" }}">
     <span class="image">
-      <img src="{{ .Params.cover }}" alt="{{ .Title }} cover" />
+    {{ if .Resources.GetMatch "intro" }}
+      {{ $preview := .Resources.GetMatch "intro" }}
+      {{ with $preview }}
+      {{ $scaled := .Fill "322x322 smart" }}
+      <img src="{{ $scaled.RelPermalink }}" alt="" />
+    {{ end }}
+  {{ end }}
+  {{ if .Resources.GetMatch "introsvg" }}
+    {{ $preview := .Resources.GetMatch "introsvg" }}
+      <img src="{{ $preview.RelPermalink }}" alt="" />
+  {{ end }}
     </span>
     <a href="{{ .Permalink }}">
       <h2>{{ .Title }} </h2>
