@@ -34,7 +34,7 @@
 			.copyright {
 				width: 100%;
 				padding: 0;
-				margin-top: 5em;
+				margin-top: 0em; //was 5
 				list-style: none;
 				font-size: 0.8em;
 				color: transparentize(_palette(fg), 0.3);
@@ -62,7 +62,7 @@
 		@include breakpoint(large) {
 			$gutter: _size(gutter) * 0.5;
 
-			@include padding(5em, 0);
+			@include padding(1em, 0); // was 5em, padding around copyright
 
 			> .inner {
 				section:nth-child(1) {
