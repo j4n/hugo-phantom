@@ -8,7 +8,7 @@
 <section class="tiles">
 {{ $.Scratch.Set "classCounter" 1}}
 {{ range .Data.Pages }}
-  {{ range first 12 (where .Pages "Section" "post")}}
+  {{ range (where .Pages "Section" "project")}}
   <article class="style{{ $.Scratch.Get "classCounter" }}">
     <span class="image">
       <img src="{{ .Params.cover }}" alt="{{ .Title }} cover" />
@@ -28,9 +28,10 @@
   {{ end }} <!-- .Pages -->
 {{ end }} <!-- .Data.Pages -->
 </section>
+<!--
 <div style="padding:4ex;">
   <p class="align-center">
-  <a class="button special fit" href="/post/">{{ .Site.Data.i18n.morelink }}</a>
+  <a class="button special fit" href="/projects/">{{ .Site.Data.i18n.morelink }}</a>
   </p>
 </div>
 {{ end }}
