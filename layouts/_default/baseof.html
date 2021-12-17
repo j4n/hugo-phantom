@@ -27,10 +27,8 @@
     <meta name="DC.language" content="de" />
     <meta name="DC.publisher" content="{{ .Site.Params.author }}"/>
     <meta name="DC.subject" content="{{ range .Params.tags }}{{ . }},{{ end }}" />
-    {{ template "_internal/twitter_cards.html" . }}
     {{ template "_internal/opengraph.html" . }}
     {{ template "_internal/schema.html" . }}
-    {{ template "_internal/google_news.html" . }}
   </head>
   <body>
     <!-- Wrapper -->
