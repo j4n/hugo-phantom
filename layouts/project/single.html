@@ -1,4 +1,5 @@
 {{ define "main" }}
+<!-- Todo: Masthead caption style not there yet --> 
 <!-- Main -->
 <h1>{{ .Title }} - {{ .Description }} ({{ .PublishDate.Format "2006" }})</h1>
 
@@ -7,11 +8,11 @@
   {{ with $.Param "resources.intro" }}
     {{ $src := $.Param "resources.intro" }}
     {{ with $.Page.Resources.GetMatch ($src) }}
-      {{ $scaled := .Resize "500x500 Lanzcos" }}
+    {{ $scaled := ( .Fit "500x500 smart Lanzcos" ) }}
       <!-- <img class="image main" src="{{ $scaled.RelPermalink }}" caption="" /> -->
       <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="image main" style="background-image: url('{{ $scaled }}');">
-          <img itemprop="thumbnail" src="{{ $scaled }}" alt='{{ $.Param "resources.intro_caption" }}'/>
+        <div class="img image main" style="background-image: url('{{ $scaled.RelPermalink }}');">
+          <img itemprop="thumbnail" src="{{ $scaled.RelPermalink }}" alt='{{ $.Param "resources.intro_caption" }}'/>
         </div>
         <a href="{{ . }}" itemprop="contentUrl"></a>
         {{ with $.Param "resources.intro_caption" }}
