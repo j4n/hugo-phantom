@@ -11,9 +11,11 @@
   {{ range (where .Pages "Section" "project")}}
   <article class="style{{ $.Scratch.Get "classCounter" }}">
     <span class="image">
-      {{ with .Resources.GetMatch (.Params.cover) }}
-        {{ $scaled := ( .Fit "500x500 smart Lanzcos" ) }}
-        <img src="{{ $scaled.RelPermalink }}" alt="{{ .Title }}" />
+      {{ if .Params.cover }}
+        {{ with .Resources.GetMatch (.Params.cover) }}
+          {{ $scaled := ( .Fit "500x500 smart Lanzcos" ) }}
+          <img src="{{ $scaled.RelPermalink }}" alt="{{ .Title }}" />
+        {{ end }}
       {{ end }}
     </span>
     <a href="{{ .Permalink }}">
