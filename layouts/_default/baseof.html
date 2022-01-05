@@ -6,7 +6,12 @@
 -->
 <html>
   <head>
-    <title>{{.Site.Title}} - {{ .Title }}</title>
+    <title>{{.Site.Title}} - 
+      {{ if .IsHome }}
+      Homepage
+      {{ else }}
+      {{ .Title }}
+      {{ end }}</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="referrer" content="no-referrer">
