@@ -1,0 +1,30 @@
+{{ define "main" }}
+<!-- Main -->
+<header>
+  <h1>Projects</h1>
+</header>
+{{ range .Data.Pages }}
+    <h2><a href="{{ .Permalink }}">{{ .Title }} ({{ .Date.Format "2006" }})</a></h2>
+  {{ if .Params.cover }}
+    {{ with .Resources.GetMatch (.Params.cover) }}
+      {{ $scaled := ( .Fit "250x250 smart Lanzcos" ) }}
+      <img class="left image" src="{{ $scaled.RelPermalink }}" alt="{{ .Title }}" />
+    {{ end }}
+  {{ end }}
+  <!--    <p> {{ .Date.Format "January, 2006" }} </p> -->
+
+    <div>
+      <h4>{{ .Description }}</h4>
+    </div>
+
+  <div>
+    {{ .Summary }}
+
+    <p class="align-right"><a href='{{ .Permalink }}'><nobr>{{ .Site.Data.i18n.morelink }} →</nobr></a></p>
+
+  </div>
+  <hr />
+  {{ end }}
+{{ end }}
+
+
