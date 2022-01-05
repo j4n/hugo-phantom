@@ -6,7 +6,8 @@
 </header>
 now in logo line -->
 {{ range .Data.Pages }}
-    <h2><a href="{{ .Permalink }}">{{ .Title }} ({{ .Date.Format "2006" }})</a></h2>
+<a href="{{ .Permalink }}">
+    <h2>{{ .Title }} ({{ .Date.Format "2006" }})</h2>
   {{ if .Params.cover }}
     {{ with .Resources.GetMatch (.Params.cover) }}
       {{ $scaled := ( .Fit "250x250 smart Lanzcos" ) }}
@@ -14,7 +15,7 @@ now in logo line -->
     {{ end }}
   {{ end }}
   <!--    <p> {{ .Date.Format "January, 2006" }} </p> -->
-
+</a>
     <div>
       <h4>{{ .Description }}</h4>
     </div>
