@@ -1,8 +1,10 @@
 {{ define "main" }}
 <!-- Main -->
+ <!--  
 <header>
-  <h1>Projects</h1>
+ <h1>{{ .Title }}</h1> 
 </header>
+now in logo line -->
 {{ range .Data.Pages }}
     <h2><a href="{{ .Permalink }}">{{ .Title }} ({{ .Date.Format "2006" }})</a></h2>
   {{ if .Params.cover }}

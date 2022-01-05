@@ -6,7 +6,18 @@
 <!--
       <span class="symbol"><img src="/images/logo.svg" alt="" /></span>
 -->
-      <span class="title">{{ .Site.Title }}</span>
+      <span class="title">{{ .Site.Title }}
+{{ if .IsHome }}
+- Home
+{{ else if .IsSection }}
+- {{ .Section }}
+{{ else if .IsPage }}
+  {{ if .Section }}
+- {{ .Section }}
+  {{ end }}
+- {{ .Title }}
+{{ end }}
+      </span>
     </a>
 
     <!-- Nav -->
