@@ -11,7 +11,7 @@
     {{ $scaled := ( .Fit "500x500 smart Lanzcos" ) }}
       <!-- <img class="image main" src="{{ $scaled.RelPermalink }}" caption="" /> -->
       <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img image main" style="background-image: url('{{ $scaled.RelPermalink }}');">
+        <div class="image main" style="background-image: url('{{ $scaled.RelPermalink }}');">
           <img itemprop="thumbnail" src="{{ $scaled.RelPermalink }}" alt='{{ $.Param "resources.intro_caption" }}'/>
         </div>
         <a href="{{ . }}" itemprop="contentUrl"></a>
