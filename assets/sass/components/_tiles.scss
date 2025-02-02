@@ -204,6 +204,8 @@
 			}
 		}
 
+		// This is where the responsiveness for tiles happens -ja
+
 		@include breakpoint(large) {
 			$gutter: _size(gutter) * 0.5;
 
@@ -216,12 +218,13 @@
 		}
 
 		@include breakpoint(medium) {
-			$gutter: _size(gutter);
+			$gutter: _size(gutter) * 0.5 ;
 
 			margin: ($gutter * -1) 0 0 ($gutter * -1);
 
 			article {
-				width: calc(#{(100% / 2)} - #{$gutter * 1});
+				//width: calc(#{(100% / 2)} - #{$gutter * 1});
+				width: calc(#{(100% / 3)} - #{$gutter * 1});
 				margin: $gutter 0 0 $gutter;
 			}
 		}
@@ -243,15 +246,15 @@
 			}
 		}
 
-		@include breakpoint(xsmall) {
-			$gutter: _size(gutter) * 0.5;
-
-			margin: 0;
-
-			article {
-				width: 100%;
-				margin: $gutter 0 0 0;
-			}
-		}
+//		@include breakpoint(xsmall) {
+//			$gutter: _size(gutter) * 0.5;
+//
+//			margin: 0;
+//
+//			article {
+//				width: 100%;
+//				margin: $gutter 0 0 0;
+//			}
+//		}
 	}
 
