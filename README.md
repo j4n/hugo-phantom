@@ -1,5 +1,16 @@
 # Hugo Phantom Theme
 
+## Add Custom Header lines:
+
+e.g.: 
+
+{{- define "customhead" }}
+    <link rel="stylesheet" href="/css/hugo-easy-gallery.css" />
+{{ end -}}
+
+
+## Original Notes
+
 This is a Hugo theme based on the [Phantom Theme by HTML5 UP](https://html5up.net/phantom).
 
 I created this theme for my [blog](http://www.hasecke.eu). Actually it's my first Hugo theme.

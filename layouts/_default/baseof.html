@@ -22,6 +22,7 @@
     <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 
+    {{- block "customhead" . }}{{ end }}
     <link rel="schema.DC"      href="http://purl.org/dc/elements/1.1/" />
     <link rel="schema.DCTERMS" href="http://purl.org/dc/terms/" />
     <meta name="DC.title" content="{{ .Title }}" />
