@@ -1,0 +1,63 @@
+///
+/// InfoBox for Projects
+///
+
+/* InfoBox */
+
+.infobox {
+  display: block;
+  width: 250px;
+  float: right;
+  margin-left: 20px;
+  //  float: left;
+   // margin-right: 20px;
+    margin-bottom: 20px;
+    //    margin-bottom: _size(element-margin);
+    border-radius: _size(border-radius);
+    border: solid _size(border-width) _palette(border);
+    margin-bottom: _size(element-margin);
+    padding: 0.75em;
+    font-size: 75%;
+
+    > :last-child,
+    > :last-child > :last-child,
+    > :last-child > :last-child > :last-child {
+        margin-bottom: 0;
+    }
+
+    &.alt {
+        border: 0;
+        border-radius: 0;
+        padding: 0;
+    }
+}
+
+.infobox ul {
+    margin: 0 0 1em 0;
+}
+
+/* InfoFig */
+.infofig {
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border-radius: _size(border-radius);
+    border: none;
+}
+
+.infofig img {
+    border-radius: 2%;
+}
+
+.infofig figure img {
+    width: 100%;
+    height: auto;
+}
+/*
+.float-clear {
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+*/
