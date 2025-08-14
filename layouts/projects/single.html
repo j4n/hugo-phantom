@@ -1,41 +1,65 @@
-{{ define "main" }}
-<!-- Todo: Masthead caption style not there yet --> 
-<!-- Main -->
-<h1>{{ .Title }}: {{ .Description }} ({{ .PublishDate.Format "2006" }})</h1>
-
-<div class="row">
-  <div class="4u">
-  {{ with $.Param "resources.intro" }}
-    {{ $src := $.Param "resources.intro" }}
-    {{ with $.Page.Resources.GetMatch ($src) }}
-    {{ $scaled := ( .Fit "500x500 smart Lanzcos" ) }}
-      <!-- <img class="image main" src="{{ $scaled.RelPermalink }}" caption="" /> -->
-      <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="image main" style="background-image: url('{{ $scaled.RelPermalink }}');">
-          <img itemprop="thumbnail" src="{{ $scaled.RelPermalink }}" alt='{{ $.Param "resources.intro_caption" }}'/>
+{{- define "main" -}} <!-- vim: set ts=4 sw=4 expandtab --> <!-- Todo: Masthead caption style not there yet --> <!-- Main -->
+    <h1>{{ .Title }}: {{ .Description }} ({{ .PublishDate.Format "2006" }})</h1>
+    <div class="row">
+        <div class="8u">
+            {{ .Summary }}
         </div>
-        <a href="{{ . }}" itemprop="contentUrl"></a>
-        {{ with $.Param "resources.intro_caption" }}
-        <figcaption>
-          <p>
-            {{- . -}}
-          </p>
-        </figcaption>
-        {{- end }}
-      </figure>
-    {{ end }}
-  {{ end }}
-  </div>
-  <div class="8u$">
-    <h3>Skills:</h3>
-    <ul>
-    {{ range $.Param "resources.skills" }}
-      <li>{{ . }}</li>
-    {{ end }}
-    </ul>
-  </div>
-  <div class="12u$">
-    <p>{{ .Content }}</p>
-  </div>
-</div>
+        <div class="4u">
+            <div class="infofig">
+
+                {{- with $.Param "resources.intro" -}}
+                    {{- $src := $.Param "resources.intro" -}}
+                    {{- with $.Page.Resources.GetMatch ($src) -}}
+                        {{- $scaled := . -}}
+                        {{- if not (in ($.Param "resources.intro_options") "raw") -}}
+                            {{- $scaled = (.Fit "500x500 smart Lanzcos") -}}
+                        {{- end -}}
+                        {{- $width := 0 -}}
+                        {{- range $.Param "resources.intro_options" -}}
+                            {{- if reflect.IsMap . -}}
+                                {{- with .width -}}
+                                    {{- $width = . -}}
+                                {{- end -}}
+                            {{- end -}}
+                        {{- end -}}
+
+                        <figure itemprop="associatedMedia" itemscope
+                            itemtype="http://schema.org/ImageObject"
+                            {{- if $width -}}style="max-width: {{- $width | default "200px" -}}"{{- end -}}
+                        >
+                            <img
+                                itemprop="thumbnail"
+                                src="{{ $scaled.RelPermalink }}"
+                                alt='{{ $.Param "resources.intro_caption" }}'
+                            />
+                            <a href="{{ . }}" itemprop="contentUrl"></a>
+                            {{- with $.Param "resources.intro_caption" -}}
+                            <figcaption>
+                                <p>{{- . -}}</p>
+                            </figcaption>
+                            {{- end }}
+                        </figure>
+                    {{- end -}}
+                {{- end -}}
+            </div>
+            <!-- <div class="float-clear"></div> -->
+            <div class="infobox">
+                <h3>Topics</h3>
+                <ul>
+                    {{- range $.Param "resources.topics" -}}
+                    <li>{{ . }}</li>
+                    {{- end -}}
+                </ul>
+                <h3>Methods</h3>
+                <ul>
+                    {{- range $.Param "resources.skills" -}}
+                    <li>{{ . }}</li>
+                    {{- end -}}
+                </ul>
+            </div>
+        </div>
+        <div class="12u">
+            {{ .ContentWithoutSummary }}
+        </div>
+    </div>
 {{ end }}
